@@ -1,0 +1,28 @@
+
+@import 'variables';
+@import 'mixins';
+
+// Mixins específicos para responsividad
+@mixin mobile-first {
+  @include responsive(sm) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @include responsive(md) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @include responsive(lg) {
+    @content;
+  }
+}
+
+@mixin large-desktop {
+  @include responsive(xl) {
+    @content;
+  }
+}

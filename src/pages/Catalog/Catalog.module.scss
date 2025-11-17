@@ -1,0 +1,328 @@
+
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/animations';
+
+.catalog {
+  padding: $spacing-lg 0;
+  min-height: 70vh;
+
+  .pageHeader {
+    margin-bottom: $spacing-xl;
+
+    .pageTitle {
+      font-size: 2.5rem;
+      font-weight: $font-weight-bold;
+      color: $primary-color;
+      margin-bottom: $spacing-sm;
+      animation: fadeIn 0.8s ease-out;
+
+      @include responsive(md) {
+        font-size: 2rem;
+      }
+    }
+
+    .pageSubtitle {
+      font-size: 1.1rem;
+      color: lighten($text-color, 20%);
+      margin-bottom: $spacing-md;
+    }
+
+    .breadcrumb {
+      background: transparent;
+      padding: 0;
+
+      .breadcrumb-item {
+        a {
+          color: $secondary-color;
+          text-decoration: none;
+          @include transition(color, 0.3s);
+
+          &:hover {
+            color: darken($secondary-color, 15%);
+          }
+        }
+
+        &.active {
+          color: lighten($text-color, 20%);
+        }
+      }
+    }
+  }
+
+  .controlsCard {
+    background: $white;
+    border-radius: 12px;
+    padding: $spacing-lg;
+    @include box-shadow(1);
+
+    .searchSection {
+      display: flex;
+      gap: $spacing-md;
+      align-items: center;
+      margin-bottom: $spacing-md;
+
+      @include responsive(md) {
+        flex-direction: column;
+        gap: $spacing-sm;
+      }
+
+      .searchBox {
+        position: relative;
+        flex: 1;
+
+        .form-control {
+          padding-left: 40px;
+          padding-right: $spacing-xl;
+          border-radius: 25px;
+          border: 2px solid lighten($primary-color, 60%);
+          @include transition(all, 0.3s);
+
+          &:focus {
+            border-color: $secondary-color;
+            box-shadow: 0 0 0 0.2rem rgba($secondary-color, 0.25);
+          }
+        }
+
+        .clearSearch {
+          position: absolute;
+          right: $spacing-md;
+          top: 50%;
+          transform: translateY(-50%);
+          background: none;
+          border: none;
+          color: lighten($text-color, 40%);
+          cursor: pointer;
+          font-size: 1.2rem;
+          @include transition(all, 0.3s);
+
+          &:hover {
+            color: $accent-color;
+            transform: translateY(-50%) scale(1.1);
+          }
+        }
+      }
+
+      .filterToggle {
+        border-radius: 25px;
+        white-space: nowrap;
+        @include transition(all, 0.3s);
+
+        &:hover {
+          transform: translateY(-2px);
+        }
+      }
+    }
+
+    .filtersSection {
+      border-top: 1px solid lighten($background-color, 5%);
+      padding-top: $spacing-lg;
+
+      .priceRange {
+        position: relative;
+        margin-bottom: $spacing-xs;
+
+        .form-range {
+          margin-bottom: $spacing-sm;
+        }
+      }
+
+      .rangeLabels {
+        @include flex-between;
+        margin-top: -$spacing-sm;
+
+        small {
+          color: lighten($text-color, 30%);
+          font-size: 0.8rem;
+        }
+      }
+
+      .filterActions {
+        text-align: center;
+        padding-top: $spacing-md;
+
+        .btn {
+          border-radius: 25px;
+        }
+      }
+    }
+  }
+
+  .resultsInfo {
+    background: $white;
+    padding: $spacing-md;
+    border-radius: 8px;
+    margin-bottom: $spacing-md;
+    @include box-shadow(1);
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-md;
+    align-items: center;
+
+    .resultsCount {
+      font-weight: $font-weight-bold;
+      color: $primary-color;
+    }
+
+    .searchInfo,
+    .categoryInfo,
+    .priceInfo {
+      background: lighten($background-color, 2%);
+      padding: $spacing-xs $spacing-sm;
+      border-radius: 15px;
+      font-size: 0.9rem;
+      color: lighten($text-color, 20%);
+    }
+
+    @include responsive(sm) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: $spacing-sm;
+    }
+  }
+
+  .noResults {
+    text-align: center;
+    padding: $spacing-xl;
+    background: $white;
+    border-radius: 12px;
+    @include box-shadow(1);
+    animation: fadeIn 0.6s ease-out;
+
+    .noResultsIcon {
+      font-size: 4rem;
+      margin-bottom: $spacing-md;
+      opacity: 0.7;
+    }
+
+    h3 {
+      color: $primary-color;
+      margin-bottom: $spacing-sm;
+    }
+
+    p {
+      color: lighten($text-color, 20%);
+      margin-bottom: $spacing-lg;
+      font-size: 1.1rem;
+    }
+
+    .noResultsActions {
+      @include flex-center;
+      gap: $spacing-md;
+      flex-wrap: wrap;
+
+      @include responsive(sm) {
+        flex-direction: column;
+      }
+    }
+  }
+
+  .loadMoreSection {
+    .showingText {
+      color: lighten($text-color, 20%);
+      margin-bottom: $spacing-md;
+    }
+
+    .btn {
+      border-radius: 25px;
+      @include transition(all, 0.3s);
+
+      &:hover {
+        transform: translateY(-2px);
+        @include box-shadow(2);
+      }
+    }
+  }
+
+  .quickCategories {
+    background: $white;
+    padding: $spacing-lg;
+    border-radius: 12px;
+    @include box-shadow(1);
+
+    h4 {
+      color: $primary-color;
+      margin-bottom: $spacing-md;
+      text-align: center;
+    }
+
+    .categoryTags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: $spacing-sm;
+      justify-content: center;
+
+      .categoryTag {
+        display: flex;
+        align-items: center;
+        gap: $spacing-xs;
+        background: lighten($background-color, 2%);
+        color: $text-color;
+        text-decoration: none;
+        padding: $spacing-sm $spacing-md;
+        border-radius: 25px;
+        @include transition(all, 0.3s);
+        border: 2px solid transparent;
+
+        &:hover {
+          background: $secondary-color;
+          color: $white;
+          transform: translateY(-2px);
+          text-decoration: none;
+        }
+
+        &.active {
+          background: $primary-color;
+          color: $white;
+          border-color: $secondary-color;
+        }
+
+        .productCount {
+          background: rgba($white, 0.2);
+          padding: 2px 6px;
+          border-radius: 10px;
+          font-size: 0.7rem;
+        }
+      }
+    }
+  }
+
+  .debugInfo {
+    text-align: center;
+    padding: $spacing-sm;
+    background: lighten($warning-color, 40%);
+    border-radius: 8px;
+    border-left: 4px solid $warning-color;
+
+    small {
+      color: darken($warning-color, 20%);
+    }
+  }
+}
+
+// Responsive
+@include responsive(md) {
+  .catalog {
+    padding: $spacing-md 0;
+
+    .controlsCard {
+      padding: $spacing-md;
+    }
+
+    .quickCategories {
+      padding: $spacing-md;
+    }
+  }
+}
+
+@include responsive(sm) {
+  .catalog {
+    .pageHeader {
+      margin-bottom: $spacing-lg;
+    }
+
+    .controlsCard {
+      padding: $spacing-sm;
+    }
+  }
+}
