@@ -1,11 +1,14 @@
-
 import React, { useState } from 'react';
+import { useCart } from '../../hook/useCart';
 import styles from './ProductCard.module.scss';
 
-const ProductCard = ({ product, addToCart, animationDelay = 0 }) => {
+const ProductCard = ({ product, animationDelay = 0 }) => { 
   const [imageLoaded, setImageLoaded] = useState(false);
   const [imageError, setImageError] = useState(false);
   const [addedToCart, setAddedToCart] = useState(false);
+
+  //HOOK useCart
+  const { addToCart } = useCart();
 
   // Debug
   console.log(`🎨 Renderizando ProductCard: ${product.name}`, product.image);
@@ -14,11 +17,9 @@ const ProductCard = ({ product, addToCart, animationDelay = 0 }) => {
     e.preventDefault();
     e.stopPropagation();
     
-    if (addToCart) {
-      addToCart(product);
-      setAddedToCart(true);
-      setTimeout(() => setAddedToCart(false), 2000);
-    }
+    addToCart(product);
+    setAddedToCart(true);
+    setTimeout(() => setAddedToCart(false), 2000);
   };
 
   const handleImageError = (e) => {

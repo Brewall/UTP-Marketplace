@@ -6,6 +6,7 @@
 .cart {
   padding: $spacing-lg 0;
   min-height: 70vh;
+  background-color: $background-color;
 
   .pageHeader {
     margin-bottom: $spacing-xl;
@@ -13,7 +14,7 @@
     .pageTitle {
       font-size: 2.5rem;
       font-weight: $font-weight-bold;
-      color: $primary-color;
+      color: $secondary-color;
       margin-bottom: $spacing-sm;
       animation: fadeIn 0.8s ease-out;
 
@@ -28,17 +29,17 @@
 
       .breadcrumb-item {
         a {
-          color: $secondary-color;
+          color: $primary-color;
           text-decoration: none;
           @include transition(color, 0.3s);
 
           &:hover {
-            color: darken($secondary-color, 15%);
+            color: $accent-color;
           }
         }
 
         &.active {
-          color: lighten($text-color, 20%);
+          color: $text-secondary;
         }
       }
     }
@@ -56,17 +57,28 @@
       font-size: 4rem;
       margin-bottom: $spacing-md;
       animation: bounce 2s infinite;
+      color: $primary-color;
     }
 
     h2 {
-      color: $primary-color;
+      color: $secondary-color;
       margin-bottom: $spacing-sm;
     }
 
     p {
-      color: lighten($text-color, 20%);
+      color: $text-secondary;
       margin-bottom: $spacing-lg;
       font-size: 1.1rem;
+    }
+
+    .emptyCartButtons {
+      @include flex-center;
+      gap: $spacing-md;
+      flex-wrap: wrap;
+
+      @include responsive(sm) {
+        flex-direction: column;
+      }
     }
   }
 
@@ -80,10 +92,10 @@
       @include flex-between;
       margin-bottom: $spacing-lg;
       padding-bottom: $spacing-md;
-      border-bottom: 2px solid lighten($background-color, 5%);
+      border-bottom: 2px solid darken($background-color, 5%);
 
       h3 {
-        color: $primary-color;
+        color: $secondary-color;
         margin: 0;
       }
 
@@ -99,13 +111,13 @@
       gap: $spacing-md;
       align-items: center;
       padding: $spacing-md 0;
-      border-bottom: 1px solid lighten($background-color, 5%);
+      border-bottom: 1px solid darken($background-color, 5%);
       @include transition(all, 0.3s);
       opacity: 0;
       animation-fill-mode: forwards;
 
       &:hover {
-        background: lighten($background-color, 2%);
+        background: darken($white, 2%);
         border-radius: 8px;
         padding: $spacing-md;
         margin: 0 -$spacing-md;
@@ -138,13 +150,13 @@
         .itemName {
           font-size: 1.1rem;
           font-weight: $font-weight-bold;
-          color: $primary-color;
+          color: $secondary-color;
           margin-bottom: $spacing-xs;
           line-height: 1.3;
         }
 
         .itemDescription {
-          color: lighten($text-color, 20%);
+          color: $text-secondary;
           font-size: 0.9rem;
           margin-bottom: $spacing-xs;
           display: -webkit-box;
@@ -158,14 +170,14 @@
           .condition {
             display: block;
             font-size: 0.8rem;
-            color: lighten($text-color, 30%);
+            color: $text-secondary;
           }
         }
       }
 
       .itemPrice {
         font-weight: $font-weight-bold;
-        color: $accent-color;
+        color: $primary-color;
         font-size: 1.1rem;
       }
 
@@ -189,7 +201,7 @@
           @include box-shadow(1);
 
           &:hover:not(:disabled) {
-            background: $secondary-color;
+            background: $primary-color;
             color: $white;
             transform: scale(1.1);
           }
@@ -209,7 +221,7 @@
 
       .itemTotal {
         font-weight: $font-weight-bold;
-        color: $primary-color;
+        color: $secondary-color;
         font-size: 1.1rem;
       }
 
@@ -218,8 +230,8 @@
         width: 32px;
         height: 32px;
         border: none;
-        background: lighten($accent-color, 40%);
-        color: $accent-color;
+        background: lighten($primary-color, 40%);
+        color: $primary-color;
         border-radius: 50%;
         font-size: 1.2rem;
         font-weight: $font-weight-bold;
@@ -227,7 +239,7 @@
         @include transition(all, 0.3s);
 
         &:hover {
-          background: $accent-color;
+          background: $primary-color;
           color: $white;
           transform: scale(1.1);
         }
@@ -244,10 +256,10 @@
     top: $spacing-lg;
 
     .summaryTitle {
-      color: $primary-color;
+      color: $secondary-color;
       margin-bottom: $spacing-lg;
       padding-bottom: $spacing-md;
-      border-bottom: 2px solid lighten($background-color, 5%);
+      border-bottom: 2px solid darken($background-color, 5%);
     }
 
     .summaryDetails {
@@ -261,8 +273,8 @@
         &.total {
           font-size: 1.3rem;
           font-weight: $font-weight-bold;
-          color: $primary-color;
-          border-top: 2px solid lighten($background-color, 5%);
+          color: $secondary-color;
+          border-top: 2px solid darken($background-color, 5%);
           margin-top: $spacing-sm;
           padding-top: $spacing-sm;
         }
@@ -277,13 +289,13 @@
     .couponSection {
       margin-bottom: $spacing-lg;
       padding: $spacing-md;
-      background: lighten($background-color, 2%);
+      background: darken($white, 2%);
       border-radius: 8px;
 
       h4 {
         font-size: 1rem;
         margin-bottom: $spacing-sm;
-        color: $primary-color;
+        color: $secondary-color;
       }
 
       .couponInput {
@@ -301,7 +313,7 @@
       }
 
       .couponHint {
-        color: lighten($text-color, 30%);
+        color: $text-secondary;
         font-size: 0.8rem;
       }
     }
@@ -312,11 +324,16 @@
       gap: $spacing-sm;
 
       .checkoutBtn {
+        background-color: $primary-color;
+        border-color: $primary-color;
+        color: $white;
         padding: $spacing-md;
         font-weight: $font-weight-bold;
         @include transition(all, 0.3s);
 
         &:hover {
+          background-color: $accent-color;
+          border-color: $accent-color;
           transform: translateY(-2px);
           @include box-shadow(2);
         }
@@ -326,13 +343,20 @@
         padding: $spacing-md;
         text-align: center;
         text-decoration: none;
+        color: $secondary-color;
+        border: 1px solid $secondary-color;
+
+        &:hover {
+          background-color: $secondary-color;
+          color: $white;
+        }
       }
     }
 
     .additionalInfo {
       margin-top: $spacing-lg;
       padding-top: $spacing-md;
-      border-top: 1px solid lighten($background-color, 5%);
+      border-top: 1px solid darken($background-color, 5%);
 
       .infoItem {
         display: flex;
@@ -347,7 +371,7 @@
         .infoIcon {
           font-size: 1.5rem;
           flex-shrink: 0;
-          color: $secondary-color;
+          color: $primary-color;
         }
 
         div {
@@ -355,13 +379,13 @@
 
           strong {
             display: block;
-            color: $primary-color;
+            color: $secondary-color;
             font-size: 0.9rem;
             margin-bottom: 2px;
           }
 
           p {
-            color: lighten($text-color, 20%);
+            color: $text-secondary;
             font-size: 0.8rem;
             margin: 0;
           }
@@ -449,7 +473,7 @@
         "remove";
       text-align: center;
       padding: $spacing-md;
-      background: lighten($background-color, 2%);
+      background: darken($white, 2%);
       border-radius: 8px;
       margin-bottom: $spacing-sm;
 

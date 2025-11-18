@@ -1,36 +1,54 @@
-
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import CartCounter from '../CartCounter/CartCounter'; // ← IMPORTAR DESDE LA CARPETA
 import styles from './Header.module.scss';
 
-const Header = ({ cartCount }) => {
+const Header = () => {
   const location = useLocation();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
 
   return (
     <header className={`${styles.header} navbar navbar-expand-lg navbar-dark`}>
       <div className="container">
-        <Link className={`${styles.logo} navbar-brand`} to="/">
-          UTP Marketplace
+        <Link className={`${styles.logo} navbar-brand`} to="/" onClick={closeMenu}>
+          <div className={styles.logoCircle}>
+            <img 
+              src="/logo-utp.jpg" 
+              alt="UTP Marketplace"
+              className={styles.logoImage}
+            />
+          </div>
         </Link>
         
         <button 
-          className="navbar-toggler" 
+          className={`navbar-toggler ${styles.navbarToggler}`}
           type="button" 
-          data-bs-toggle="collapse" 
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
+          onClick={toggleMenu}
           aria-label="Toggle navigation"
+          aria-expanded={isMenuOpen}
         >
-          <span className="navbar-toggler-icon"></span>
+          <span className={styles.hamburger}>
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
         </button>
         
-        <div className="collapse navbar-collapse" id="navbarNav">
+        <div className={`${styles.navbarCollapse} ${isMenuOpen ? styles.show : ''}`}>
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
               <Link 
                 className={`nav-link ${location.pathname === '/' ? 'active' : ''}`} 
                 to="/"
+                onClick={closeMenu}
               >
                 Inicio
               </Link>
@@ -39,22 +57,14 @@ const Header = ({ cartCount }) => {
               <Link 
                 className={`nav-link ${location.pathname === '/catalog' ? 'active' : ''}`} 
                 to="/catalog"
+                onClick={closeMenu}
               >
                 Catálogo
               </Link>
             </li>
             <li className="nav-item">
-              <Link 
-                className={`nav-link ${location.pathname === '/cart' ? 'active' : ''}`} 
-                to="/cart"
-              >
-                Carrito 
-                {cartCount > 0 && (
-                  <span className={styles.cartBadge}>
-                    {cartCount}
-                  </span>
-                )}
-              </Link>
+              {/* USAR CartCounter aquí */}
+              <CartCounter />
             </li>
           </ul>
         </div>

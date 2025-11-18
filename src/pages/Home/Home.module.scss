@@ -5,7 +5,7 @@
 
 .home {
   .hero {
-    background: linear-gradient(135deg, $primary-color 0%, $secondary-color 100%);
+    background: linear-gradient(135deg, $secondary-color 0%, darken($secondary-color, 10%) 100%); // Negro UTP para el header
     color: $white;
     padding: $spacing-xl 0;
     position: relative;
@@ -33,7 +33,7 @@
         line-height: 1.2;
 
         span {
-          color: lighten($secondary-color, 25%);
+          color: $primary-color; 
           text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
 
@@ -144,14 +144,15 @@
 
   .categories {
     padding: $spacing-xl 0;
-    background: $white;
+    background: linear-gradient(135deg, $primary-color 0%, $accent-color 100%); // Rojo UTP para la sección de categorías
+    color: $white;
 
     .sectionTitle {
       text-align: center;
       font-size: 2.5rem;
       font-weight: $font-weight-bold;
       margin-bottom: $spacing-sm;
-      color: $primary-color;
+      color: $white;
 
       @include responsive(md) {
         font-size: 2rem;
@@ -161,32 +162,33 @@
     .sectionSubtitle {
       text-align: center;
       font-size: 1.1rem;
-      color: lighten($text-color, 20%);
+      color: rgba($white, 0.9);
       margin-bottom: $spacing-lg;
     }
 
     .categoryCard {
       display: block;
-      background: $white;
+      background: rgba($white, 0.95);
       border-radius: 15px;
       overflow: hidden;
       text-decoration: none;
       color: inherit;
-      @include box-shadow(1);
+      @include box-shadow(2);
       @include transition(all, 0.3s);
 
       &:hover {
         transform: translateY(-8px);
-        @include box-shadow(3);
+        @include box-shadow(4);
         text-decoration: none;
         color: inherit;
+        background: $white;
 
         .categoryImage img {
           transform: scale(1.1);
         }
 
         .categoryLink {
-          color: $secondary-color;
+          color: $primary-color;
           transform: translateX(4px);
         }
       }
@@ -209,11 +211,12 @@
           left: 0;
           right: 0;
           bottom: 0;
-          background: linear-gradient(135deg, rgba($primary-color, 0.8), rgba($secondary-color, 0.8));
+          background: linear-gradient(135deg, rgba($primary-color, 0.7), rgba($accent-color, 0.7));
           @include flex-center;
 
           .categoryIcon {
             font-size: 3rem;
+            color: $white;
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
           }
         }
@@ -225,18 +228,18 @@
         h3 {
           font-size: 1.3rem;
           font-weight: $font-weight-bold;
-          color: $primary-color;
+          color: $secondary-color;
           margin-bottom: $spacing-xs;
         }
 
         p {
-          color: lighten($text-color, 20%);
+          color: $text-secondary;
           margin-bottom: $spacing-sm;
           line-height: 1.5;
         }
 
         .categoryLink {
-          color: $secondary-color;
+          color: $primary-color;
           font-weight: $font-weight-bold;
           @include transition(all, 0.3s);
         }
@@ -246,14 +249,14 @@
 
   .featured {
     padding: $spacing-xl 0;
-    background: linear-gradient(135deg, $background-color, darken($background-color, 3%));
+    background: $white;
 
     .sectionTitle {
       text-align: center;
       font-size: 2.5rem;
       font-weight: $font-weight-bold;
       margin-bottom: $spacing-sm;
-      color: $primary-color;
+      color: $secondary-color;
 
       @include responsive(md) {
         font-size: 2rem;
@@ -263,27 +266,29 @@
     .sectionSubtitle {
       text-align: center;
       font-size: 1.1rem;
-      color: lighten($text-color, 20%);
+      color: $text-secondary;
       margin-bottom: $spacing-lg;
     }
   }
 
-  .whyUs {
+    .whyUs {
     padding: $spacing-xl 0;
-    background: $white;
+    background: linear-gradient(135deg, darken($secondary-color, 5%) 0%, $secondary-color 100%); // Fondo negro oscuro
+    color: $white;
 
     .whyUsImage {
       width: 100%;
       border-radius: 15px;
-      @include box-shadow(2);
+      @include box-shadow(3);
     }
 
     .whyUsContent {
       h2 {
         font-size: 2.5rem;
         font-weight: $font-weight-bold;
-        color: $primary-color;
         margin-bottom: $spacing-lg;
+        color: $white;
+        text-align: center;
 
         @include responsive(md) {
           font-size: 2rem;
@@ -296,35 +301,49 @@
           align-items: flex-start;
           gap: $spacing-md;
           margin-bottom: $spacing-lg;
-          padding: $spacing-md;
-          border-radius: 10px;
+          padding: $spacing-lg;
+          border-radius: 12px;
+          background: rgba($white, 0.08);
+          border: 1px solid rgba($white, 0.1);
           @include transition(all, 0.3s);
 
           &:hover {
-            background: lighten($background-color, 2%);
+            background: rgba($white, 0.15);
             transform: translateX(8px);
+            border-color: rgba($primary-color, 0.3);
+            @include box-shadow(2);
           }
 
           .benefitIcon {
-            font-size: 2rem;
+            font-size: 2.5rem;
             flex-shrink: 0;
-            color: $secondary-color;
+            color: $primary-color;
+            background: rgba($primary-color, 0.1);
+            padding: $spacing-sm;
+            border-radius: 12px;
+            @include transition(all, 0.3s);
+          }
+
+          &:hover .benefitIcon {
+            background: rgba($primary-color, 0.2);
+            transform: scale(1.1);
           }
 
           div {
             flex: 1;
 
             h4 {
-              font-size: 1.2rem;
+              font-size: 1.3rem;
               font-weight: $font-weight-bold;
-              color: $primary-color;
+              color: $white;
               margin-bottom: $spacing-xs;
             }
 
             p {
-              color: lighten($text-color, 20%);
+              color: rgba($white, 0.8);
               margin: 0;
-              line-height: 1.5;
+              line-height: 1.6;
+              font-size: 1rem;
             }
           }
         }

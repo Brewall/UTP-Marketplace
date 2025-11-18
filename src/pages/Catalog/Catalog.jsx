@@ -5,7 +5,8 @@ import ProductCard from '../../components/ProductCard/ProductCard';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 import styles from './Catalog.module.scss';
 
-const Catalog = ({ products, loading, addToCart }) => {
+
+const Catalog = ({ products, loading }) => { // ← QUITAR addToCart de los props
   const [searchParams, setSearchParams] = useSearchParams();
   const [searchTerm, setSearchTerm] = useState(searchParams.get('search') || '');
   const [selectedCategory, setSelectedCategory] = useState(searchParams.get('category') || 'all');
@@ -302,8 +303,7 @@ const Catalog = ({ products, loading, addToCart }) => {
                 <div key={product.id} className="col-md-6 col-lg-4 col-xl-3 mb-4">
                   <ProductCard 
                     product={product} 
-                    addToCart={addToCart}
-                    animationDelay={index * 0.05}
+                    animationDelay={index * 0.05} // ← QUITAR addToCart={addToCart}
                   />
                 </div>
               ))}

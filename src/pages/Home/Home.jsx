@@ -1,11 +1,10 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 import styles from './Home.module.scss';
 
-const Home = ({ products, loading, addToCart }) => {
+const Home = ({ products, loading }) => { // ← QUITAR addToCart de los props
   const categories = [
     {
       name: 'Libros Académicos',
@@ -58,7 +57,7 @@ const Home = ({ products, loading, addToCart }) => {
             <div className="col-lg-6">
               <div className={styles.heroVisual}>
                 <img 
-                  src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=500&h=400&fit=crop" 
+                  src="https://www.utp.edu.pe/descubre-utp/sites/consideracion/files/imagenes/Sala%20de%20cubiculos%201.jpg" 
                   alt="Estudiantes universitarios"
                   className={styles.heroImage}
                 />
@@ -135,7 +134,7 @@ const Home = ({ products, loading, addToCart }) => {
                 <div key={product.id} className="col-md-6 col-lg-4 mb-4">
                   <ProductCard 
                     product={product} 
-                    addToCart={addToCart}
+                    // ← QUITAR addToCart={addToCart}
                     animationDelay={index * 0.1}
                   />
                 </div>
@@ -159,7 +158,7 @@ const Home = ({ products, loading, addToCart }) => {
           <div className="row align-items-center">
             <div className="col-lg-6">
               <img 
-                src="https://profesorado.pucp.edu.pe/wp-content/uploads/2017/04/foto_nota_carrera_profesoral.jpg" 
+                src="https://www.utp.edu.pe/descubre-utp/sites/consideracion/files/imagenes/SALA%20BIM%201.jpg" 
                 alt="Comunidad universitaria"
                 className={styles.whyUsImage}
               />

@@ -6,6 +6,7 @@
 .catalog {
   padding: $spacing-lg 0;
   min-height: 70vh;
+  background-color: $background-color;
 
   .pageHeader {
     margin-bottom: $spacing-xl;
@@ -13,7 +14,7 @@
     .pageTitle {
       font-size: 2.5rem;
       font-weight: $font-weight-bold;
-      color: $primary-color;
+      color: $secondary-color;
       margin-bottom: $spacing-sm;
       animation: fadeIn 0.8s ease-out;
 
@@ -24,7 +25,7 @@
 
     .pageSubtitle {
       font-size: 1.1rem;
-      color: lighten($text-color, 20%);
+      color: $text-secondary;
       margin-bottom: $spacing-md;
     }
 
@@ -34,17 +35,17 @@
 
       .breadcrumb-item {
         a {
-          color: $secondary-color;
+          color: $primary-color;
           text-decoration: none;
           @include transition(color, 0.3s);
 
           &:hover {
-            color: darken($secondary-color, 15%);
+            color: $accent-color;
           }
         }
 
         &.active {
-          color: lighten($text-color, 20%);
+          color: $text-secondary;
         }
       }
     }
@@ -75,12 +76,12 @@
           padding-left: 40px;
           padding-right: $spacing-xl;
           border-radius: 25px;
-          border: 2px solid lighten($primary-color, 60%);
+          border: 2px solid darken($background-color, 10%);
           @include transition(all, 0.3s);
 
           &:focus {
-            border-color: $secondary-color;
-            box-shadow: 0 0 0 0.2rem rgba($secondary-color, 0.25);
+            border-color: $primary-color;
+            box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.25);
           }
         }
 
@@ -91,13 +92,13 @@
           transform: translateY(-50%);
           background: none;
           border: none;
-          color: lighten($text-color, 40%);
+          color: $text-secondary;
           cursor: pointer;
           font-size: 1.2rem;
           @include transition(all, 0.3s);
 
           &:hover {
-            color: $accent-color;
+            color: $primary-color;
             transform: translateY(-50%) scale(1.1);
           }
         }
@@ -115,7 +116,7 @@
     }
 
     .filtersSection {
-      border-top: 1px solid lighten($background-color, 5%);
+      border-top: 1px solid darken($background-color, 5%);
       padding-top: $spacing-lg;
 
       .priceRange {
@@ -132,7 +133,7 @@
         margin-top: -$spacing-sm;
 
         small {
-          color: lighten($text-color, 30%);
+          color: $text-secondary;
           font-size: 0.8rem;
         }
       }
@@ -161,17 +162,17 @@
 
     .resultsCount {
       font-weight: $font-weight-bold;
-      color: $primary-color;
+      color: $secondary-color;
     }
 
     .searchInfo,
     .categoryInfo,
     .priceInfo {
-      background: lighten($background-color, 2%);
+      background: darken($white, 2%);
       padding: $spacing-xs $spacing-sm;
       border-radius: 15px;
       font-size: 0.9rem;
-      color: lighten($text-color, 20%);
+      color: $text-secondary;
     }
 
     @include responsive(sm) {
@@ -193,15 +194,16 @@
       font-size: 4rem;
       margin-bottom: $spacing-md;
       opacity: 0.7;
+      color: $primary-color;
     }
 
     h3 {
-      color: $primary-color;
+      color: $secondary-color;
       margin-bottom: $spacing-sm;
     }
 
     p {
-      color: lighten($text-color, 20%);
+      color: $text-secondary;
       margin-bottom: $spacing-lg;
       font-size: 1.1rem;
     }
@@ -219,7 +221,7 @@
 
   .loadMoreSection {
     .showingText {
-      color: lighten($text-color, 20%);
+      color: $text-secondary;
       margin-bottom: $spacing-md;
     }
 
@@ -235,53 +237,74 @@
   }
 
   .quickCategories {
-    background: $white;
-    padding: $spacing-lg;
-    border-radius: 12px;
-    @include box-shadow(1);
+    background: linear-gradient(135deg, $primary-color 0%, $accent-color 100%); // Fondo rojo UTP
+    padding: $spacing-xl;
+    border-radius: 16px;
+    @include box-shadow(3);
+    margin-top: $spacing-xl;
 
     h4 {
-      color: $primary-color;
-      margin-bottom: $spacing-md;
+      color: $white;
+      margin-bottom: $spacing-lg;
       text-align: center;
+      font-size: 1.8rem;
+      font-weight: $font-weight-bold;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
     }
 
     .categoryTags {
       display: flex;
       flex-wrap: wrap;
-      gap: $spacing-sm;
+      gap: $spacing-md;
       justify-content: center;
 
       .categoryTag {
         display: flex;
         align-items: center;
-        gap: $spacing-xs;
-        background: lighten($background-color, 2%);
-        color: $text-color;
+        gap: $spacing-sm;
+        background: rgba($white, 0.15);
+        color: $white;
         text-decoration: none;
-        padding: $spacing-sm $spacing-md;
-        border-radius: 25px;
+        padding: $spacing-md $spacing-lg;
+        border-radius: 50px;
         @include transition(all, 0.3s);
-        border: 2px solid transparent;
+        border: 2px solid rgba($white, 0.3);
+        backdrop-filter: blur(10px);
 
         &:hover {
-          background: $secondary-color;
+          background: rgba($white, 0.25);
           color: $white;
-          transform: translateY(-2px);
+          transform: translateY(-3px);
           text-decoration: none;
+          border-color: rgba($white, 0.5);
+          @include box-shadow(2);
         }
 
         &.active {
-          background: $primary-color;
-          color: $white;
-          border-color: $secondary-color;
+          background: $white;
+          color: $primary-color;
+          border-color: $white;
+          font-weight: $font-weight-bold;
+          @include box-shadow(2);
+        }
+
+        i {
+          font-size: 1.2rem;
         }
 
         .productCount {
-          background: rgba($white, 0.2);
-          padding: 2px 6px;
-          border-radius: 10px;
-          font-size: 0.7rem;
+          background: rgba($white, 0.3);
+          color: $white;
+          padding: 4px 8px;
+          border-radius: 20px;
+          font-size: 0.8rem;
+          font-weight: $font-weight-bold;
+          margin-left: $spacing-xs;
+        }
+
+        &.active .productCount {
+          background: $primary-color;
+          color: $white;
         }
       }
     }
@@ -289,13 +312,16 @@
 
   .debugInfo {
     text-align: center;
-    padding: $spacing-sm;
-    background: lighten($warning-color, 40%);
-    border-radius: 8px;
-    border-left: 4px solid $warning-color;
+    padding: $spacing-md;
+    background: rgba($secondary-color, 0.9); // Fondo negro semitransparente
+    border-radius: 12px;
+    border-left: 4px solid $primary-color;
+    margin-top: $spacing-lg;
+    color: $white;
 
     small {
-      color: darken($warning-color, 20%);
+      color: $white;
+      font-weight: $font-weight-bold;
     }
   }
 }
