@@ -36,7 +36,6 @@
       }
     }
 
-
     &:hover .productImage {
       transform: scale(1.1);
     }
@@ -57,7 +56,7 @@
         width: 40px;
         height: 40px;
         border: 3px solid #f3f3f3;
-        border-top: 3px solid $secondary-color;
+        border-top: 3px solid $primary-color;
         border-radius: 50%;
         animation: spin 1s linear infinite;
         margin-bottom: 8px;
@@ -93,14 +92,14 @@
     .productName {
       font-size: 1.1rem;
       font-weight: $font-weight-bold;
-      color: $primary-color;
+      color: $secondary-color;
       margin-bottom: $spacing-xs;
       line-height: 1.3;
       display: block; 
     }
 
     .productDescription {
-      color: #666; 
+      color: $text-secondary;
       font-size: 0.9rem;
       margin-bottom: $spacing-md;
       display: -webkit-box;
@@ -118,7 +117,7 @@
       .rating {
         display: block;
         font-size: 0.8rem;
-        color: #888; 
+        color: $text-secondary;
         margin-bottom: 2px;
       }
     }
@@ -132,15 +131,20 @@
       .price {
         font-size: 1.5rem;
         font-weight: $font-weight-bold;
-        color: $accent-color;
+        color: $primary-color;
       }
 
       .addToCartBtn {
+        background-color: $primary-color;
+        border-color: $primary-color;
         border-radius: 25px;
         padding: $spacing-xs $spacing-md;
         transition: all 0.3s ease;
+        color: $white;
 
         &:hover:not(:disabled) {
+          background-color: $accent-color;
+          border-color: $accent-color;
           transform: translateY(-2px);
           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
         }

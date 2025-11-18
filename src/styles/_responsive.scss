@@ -1,8 +1,7 @@
-
 @import 'variables';
 @import 'mixins';
 
-// Mixins específicos para responsividad
+// Mixins específicos para responsividad con breakpoints estándar
 @mixin mobile-first {
   @include responsive(sm) {
     @content;

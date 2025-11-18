@@ -1,54 +1,29 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { getFromLocalStorage, saveToLocalStorage } from '../../services/localStorage';
+import { useCart } from '../../hook/useCart';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 import styles from './Cart.module.scss';
 
 const Cart = () => {
-  const [cartItems, setCartItems] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const {
+    cartItems,
+    removeFromCart,
+    updateQuantity,
+    clearCart
+  } = useCart();
+
+  const [loading, setLoading] = useState(false);
   const [couponCode, setCouponCode] = useState('');
   const [discount, setDiscount] = useState(0);
   const [couponApplied, setCouponApplied] = useState(false);
 
   useEffect(() => {
-    const loadCart = () => {
-      try {
-        const savedCart = getFromLocalStorage('cart') || [];
-        setCartItems(savedCart);
-      } catch (error) {
-        console.error('Error loading cart:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadCart();
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 500);
+    
+    return () => clearTimeout(timer);
   }, []);
-
-  const updateQuantity = (productId, newQuantity) => {
-    if (newQuantity < 1) return;
-
-    const updatedCart = cartItems.map(item =>
-      item.id === productId ? { ...item, quantity: newQuantity } : item
-    );
-    
-    setCartItems(updatedCart);
-    saveToLocalStorage('cart', updatedCart);
-  };
-
-  const removeFromCart = (productId) => {
-    const updatedCart = cartItems.filter(item => item.id !== productId);
-    setCartItems(updatedCart);
-    saveToLocalStorage('cart', updatedCart);
-    
-    if (updatedCart.length === 0 && couponApplied) {
-      setDiscount(0);
-      setCouponApplied(false);
-      setCouponCode('');
-    }
-  };
 
   const applyCoupon = () => {
     const coupons = {
@@ -68,14 +43,6 @@ const Cart = () => {
   };
 
   const removeCoupon = () => {
-    setDiscount(0);
-    setCouponApplied(false);
-    setCouponCode('');
-  };
-
-  const clearCart = () => {
-    setCartItems([]);
-    saveToLocalStorage('cart', []);
     setDiscount(0);
     setCouponApplied(false);
     setCouponCode('');
@@ -119,7 +86,9 @@ const Cart = () => {
           <div className="row">
             <div className="col-12">
               <div className={styles.emptyCart}>
-                <div className={styles.emptyCartIcon}><i className="bi bi-cart-x" style={{fontSize: '4rem'}}></i></div>
+                <div className={styles.emptyCartIcon}>
+                  <i className="bi bi-cart-x" style={{fontSize: '4rem'}}></i>
+                </div>
                 <h2>Tu carrito está vacío</h2>
                 <p>¡Descubre productos increíbles en nuestro catálogo!</p>
                 <div className={styles.emptyCartButtons}>
