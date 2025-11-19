@@ -18,15 +18,12 @@ export const db = getFirestore(app);
 
 export const getProducts = async () => {
   try {
-    console.log('Cargando productos de ejemplo...');
-    
     // Siempre retornar productos de ejemplo para desarrollo
     const sampleProducts = getSampleProducts();
-    console.log(`${sampleProducts.length} productos cargados correctamente`);
     return sampleProducts;
     
   } catch (error) {
-    console.error('Error cargando productos:', error);
+    console.error('Error loading products:', error);
     return getSampleProducts();
   }
 };
