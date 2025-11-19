@@ -2,14 +2,14 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
 
-// Configuración de Firebase desde variables de entorno
+// Configuración de Firebase desde variables de entorno (Vite)
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY || "demo-api-key",
-  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN || "utp-marketplace-demo.firebaseapp.com",
-  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID || "utp-marketplace-demo",
-  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET || "utp-marketplace-demo.appspot.com",
-  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID || "123456789",
-  appId: process.env.REACT_APP_FIREBASE_APP_ID || "demo-app-id"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || "demo-api-key",
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || "utp-marketplace-demo.firebaseapp.com",
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || "utp-marketplace-demo",
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || "utp-marketplace-demo.appspot.com",
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || "123456789",
+  appId: import.meta.env.VITE_FIREBASE_APP_ID || "demo-app-id"
 };
 
 // Inicializar Firebase
@@ -18,15 +18,15 @@ export const db = getFirestore(app);
 
 export const getProducts = async () => {
   try {
-    console.log('🔧 Cargando productos de ejemplo...');
+    console.log('Cargando productos de ejemplo...');
     
     // Siempre retornar productos de ejemplo para desarrollo
     const sampleProducts = getSampleProducts();
-    console.log(`✅ ${sampleProducts.length} productos cargados correctamente`);
+    console.log(`${sampleProducts.length} productos cargados correctamente`);
     return sampleProducts;
     
   } catch (error) {
-    console.error('❌ Error cargando productos:', error);
+    console.error('Error cargando productos:', error);
     return getSampleProducts();
   }
 };
