@@ -1,0 +1,22 @@
+// ============================================
+// ARCHIVO PRINCIPAL SASS - UTP MARKETPLACE
+// ============================================
+
+// 1. Vendors (Bootstrap primero para establecer base)
+@use 'vendors/bootstrap';
+
+// 2. Base (Reset y tipografía)
+//    NOTA: Cada archivo base importa directamente las variables que necesita
+@use 'base/reset';
+@use 'base/typography';
+
+// 3. Utilidades (Animaciones)
+@use 'utilities/animations';
+
+// ============================================
+// NOTA ARQUITECTURA:
+// - Los settings (variables) NO se importan globalmente
+// - Cada archivo que necesite variables debe hacer @use 'settings/variables'
+// - Los componentes usan CSS Modules (Component.module.scss)
+// ============================================
+

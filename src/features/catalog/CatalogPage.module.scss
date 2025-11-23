@@ -1,0 +1,225 @@
+.catalogPage {
+  padding: $spacing-lg $spacing-md;
+  min-height: 100vh;
+  background: $gray-100;
+}
+
+.header {
+  @include flex-column;
+  gap: $spacing-xs;
+  margin-bottom: $spacing-md;
+
+  h1 {
+    font-size: 2rem;
+    font-weight: $font-weight-bold;
+    color: $primary-color;
+    margin: 0;
+  }
+
+  .breadcrumbs {
+    font-size: .875rem;
+    color: $gray-600;
+
+    span { color: $gray-800; }
+  }
+}
+
+// Tarjeta de controles
+.controlsCard {
+  @include flex-column;
+  @include shadow(2);
+  background: $white;
+  border-radius: $border-radius-lg;
+  padding: $spacing-md;
+  margin-bottom: $spacing-md;
+  gap: $spacing-md;
+}
+
+.searchRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+  align-items: center;
+
+  .searchWrapper {
+    flex: 1 1 300px;
+    position: relative;
+
+    input {
+      width: 100%;
+      padding: $spacing-sm $spacing-sm $spacing-sm 2.5rem;
+      border: 1px solid $gray-300;
+      border-radius: $border-radius;
+      font-size: 1rem;
+      background: $gray-100;
+      @include transition((border-color, background));
+
+      &:focus {
+        outline: none;
+        border-color: $primary-color;
+        background: $white;
+      }
+    }
+
+    .icon {
+      @include flex-center;
+      position: absolute;
+      left: .9rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: $gray-500;
+      font-size: 1.1rem;
+    }
+  }
+
+  .buttons {
+    display: flex;
+    gap: $spacing-xs;
+
+    button {
+      @include flex-center;
+      gap: .4rem;
+      padding: .65rem .9rem;
+      font-size: .875rem;
+      font-weight: $font-weight-bold;
+      border: none;
+      border-radius: $border-radius;
+      cursor: pointer;
+      background: $primary-color;
+      color: $white;
+      @include transition(background);
+
+      &:hover { background: tone($primary-color, -6%); }
+
+      &.secondary { background: $gray-700; &:hover { background: tone($gray-700, -6%); } }
+      &.danger { background: $danger-color; &:hover { background: tone($danger-color, -6%); } }
+    }
+  }
+}
+
+// Fila de filtros
+.filtersRow {
+  @include grid(auto-fit, $spacing-sm);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  animation: fadeIn .25s ease;
+
+  .filterGroup {
+    @include flex-column;
+    gap: .35rem;
+
+    label {
+      font-size: .75rem;
+      font-weight: $font-weight-bold;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      color: $gray-600;
+    }
+
+    select, input[type='number'] {
+      width: 100%;
+      padding: .55rem .65rem;
+      border: 1px solid $gray-300;
+      border-radius: $border-radius;
+      font-size: .875rem;
+      background: $white;
+      @include transition(border-color);
+
+      &:focus { outline: none; border-color: $primary-color; }
+    }
+
+    .rangeInputs {
+      display: flex;
+      gap: .5rem;
+
+      input { flex: 1; }
+    }
+  }
+}
+
+// Metadatos de resultados
+.resultsMeta {
+  @include flex-between;
+  font-size: .9rem;
+  color: $gray-700;
+  margin-bottom: $spacing-sm;
+}
+
+// Cuadrícula de productos
+.grid {
+  display: grid;
+  gap: $spacing-md;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+// Elemento de producto
+.productItem {
+  @include shadow(1);
+  @include hover-lift;
+  background: $white;
+  border: 1px solid $gray-200;
+  border-radius: $border-radius;
+  padding: $spacing-sm;
+  @include transition((transform, box-shadow));
+
+  &:hover {
+    @include shadow(3);
+  }
+
+  h3 { font-size: 1rem; margin: 0 0 .4rem; color: $secondary-color; }
+  .price { font-weight: $font-weight-bold; color: $primary-color; }
+  .category { font-size: .7rem; text-transform: uppercase; letter-spacing: .5px; color: $gray-600; }
+}
+
+// Estado vacío
+.emptyState {
+  @include shadow(2);
+  margin-top: $spacing-xl;
+  text-align: center;
+  padding: $spacing-lg $spacing-md;
+  background: $white;
+  border: 1px solid $gray-200;
+  border-radius: $border-radius-lg;
+
+  .icon {
+    font-size: 4rem;
+    color: $gray-300;
+    margin-bottom: $spacing-sm;
+  }
+
+  h2 { font-size: 1.3rem; margin-bottom: .5rem; color: $secondary-color; }
+  p { color: $gray-600; font-size: .9rem; margin: 0 0 $spacing-sm; }
+
+  button {
+    @include flex-center;
+    @include transition(background);
+    background: $primary-color;
+    color: $white;
+    border: none;
+    padding: .7rem 1.1rem;
+    font-size: .85rem;
+    font-weight: $font-weight-bold;
+    letter-spacing: .5px;
+    border-radius: $border-radius;
+    cursor: pointer;
+    gap: .5rem;
+
+    &:hover { background: tone($primary-color, -6%); }
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@include respond-below(md) {
+  .searchRow { 
+    @include flex-column;
+    align-items: stretch;
+  }
+  .resultsMeta { 
+    @include flex-column;
+    align-items: flex-start;
+    gap: .4rem;
+  }
+}

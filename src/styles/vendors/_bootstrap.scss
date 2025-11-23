@@ -1,0 +1,67 @@
+// ============================================
+// PERSONALIZACIÓN DE BOOTSTRAP
+// Sobrescribir variables ANTES de importar Bootstrap
+// ============================================
+
+// Importar nuestras variables antes de Bootstrap para que los cambios funcionen
+@use '../settings/variables' as *;
+
+// Definir explícitamente el color primario institucional (defensa ante cambio tardío)
+$primary: #741111 !default;
+
+// ============================================
+// SOBRESCRIBIR VARIABLES DE BOOTSTRAP
+// ============================================
+
+// Colores principales (Usamos los colores UTP)
+$primary: $primary-color !default;
+$secondary: $secondary-color !default;
+$success: $success-color !default;
+$danger: $danger-color !default;
+$warning: $warning-color !default;
+$info: $info-color !default;
+
+// Colores adicionales
+$light: $gray-100 !default;
+$dark: $gray-800 !default;
+
+// Tipografía
+$font-family-sans-serif: $font-family-base !default;
+$font-size-base: $font-size-base !default;
+$line-height-base: $line-height-base !default;
+
+// Espaciado
+$spacer: 1rem !default;
+
+// Border radius
+$border-radius: $border-radius !default;
+$border-radius-sm: $border-radius-sm !default;
+$border-radius-lg: $border-radius-lg !default;
+
+// Transiciones
+$transition-base: $transition-base !default;
+
+// Breakpoints (Deben coincidir con nuestras variables)
+$grid-breakpoints: (
+  xs: 0,
+  sm: $breakpoint-sm,
+  md: $breakpoint-md,
+  lg: $breakpoint-lg,
+  xl: $breakpoint-xl,
+  xxl: $breakpoint-xxl
+) !default;
+
+// Anchos máximos de contenedores
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px
+) !default;
+
+// ============================================
+// IMPORTAR BOOTSTRAP COMPLETO
+// ============================================
+
+@import 'bootstrap/scss/bootstrap';

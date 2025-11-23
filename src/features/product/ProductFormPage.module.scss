@@ -1,0 +1,365 @@
+.formPage {
+  min-height: 100vh;
+  background: linear-gradient(135deg, $gray-100 0%, $white 100%);
+  padding: $spacing-xl $spacing-md;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: $spacing-lg;
+
+  h1 {
+    @include flex-center;
+    font-size: 2.5rem;
+    font-weight: $font-weight-bold;
+    color: $primary-color;
+    margin-bottom: $spacing-xs;
+    gap: .6rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    color: $gray-600;
+  }
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: $spacing-lg;
+  align-items: start;
+}
+
+// ============================================
+// BARRA LATERAL
+// ============================================
+.sidebar {
+  @include shadow(2);
+  background: $white;
+  border-radius: $border-radius-lg;
+  padding: $spacing-md;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: sticky;
+  top: $spacing-md;
+
+  .sidebarHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $spacing-md;
+    padding-bottom: $spacing-sm;
+    border-bottom: 2px solid $gray-200;
+
+    h3 {
+      font-size: 1.1rem;
+      font-weight: $font-weight-bold;
+      color: $secondary-color;
+      margin: 0;
+    }
+
+    .btnNew {
+      @include flex-center;
+      @include transition(all);
+      padding: .5rem .9rem;
+      font-size: .85rem;
+      font-weight: $font-weight-bold;
+      background: $primary-color;
+      color: $white;
+      border: none;
+      border-radius: $border-radius;
+      cursor: pointer;
+      gap: .4rem;
+
+      &:hover {
+        background: tone($primary-color, -8%);
+        transform: translateY(-1px);
+      }
+    }
+  }
+
+  .loading {
+    text-align: center;
+    padding: $spacing-lg;
+    color: $gray-600;
+  }
+
+  .emptyState {
+    @include flex-column;
+    @include flex-center;
+    padding: $spacing-xl $spacing-md;
+    color: $gray-500;
+    text-align: center;
+
+    svg {
+      font-size: 3rem;
+      margin-bottom: $spacing-sm;
+      opacity: .5;
+    }
+
+    p {
+      font-size: .9rem;
+      margin: 0;
+    }
+  }
+
+  .productList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .productItem {
+    @include transition(all);
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    padding: $spacing-sm;
+    border-radius: $border-radius;
+    cursor: pointer;
+    margin-bottom: $spacing-xs;
+    border: 2px solid transparent;
+
+    &:hover {
+      background: $gray-100;
+    }
+
+    &.active {
+      background: tone($primary-color, 45%);
+      border-color: $primary-color;
+    }
+
+    img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: $border-radius;
+      flex-shrink: 0;
+    }
+
+    .productInfo {
+      flex: 1;
+      min-width: 0;
+
+      h4 {
+        font-size: .9rem;
+        font-weight: $font-weight-bold;
+        color: $secondary-color;
+        margin: 0 0 .25rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .price {
+        display: block;
+        font-size: .85rem;
+        font-weight: $font-weight-bold;
+        color: $primary-color;
+        margin-bottom: .15rem;
+      }
+
+      .stock {
+        display: block;
+        font-size: .75rem;
+        color: $gray-600;
+      }
+    }
+
+    .btnDelete {
+      @include transition(all);
+      padding: .5rem;
+      background: transparent;
+      border: none;
+      color: $gray-500;
+      cursor: pointer;
+      border-radius: $border-radius;
+      flex-shrink: 0;
+
+      &:hover {
+        background: tone($danger-color, 40%);
+        color: $danger-color;
+      }
+    }
+  }
+}
+
+// ============================================
+// TARJETA DE FORMULARIO
+// ============================================
+.formCard {
+  @include shadow(3);
+  background: $white;
+  border-radius: $border-radius-lg;
+  padding: $spacing-lg;
+  animation: fadeInUp .4s ease;
+}
+
+.successAlert {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  background: tone($success-color, 50%);
+  border-left: 4px solid $success-color;
+  padding: $spacing-sm $spacing-md;
+  border-radius: $border-radius;
+  margin-bottom: $spacing-md;
+  color: tone($success-color, -20%);
+  font-weight: $font-weight-bold;
+
+  svg { font-size: 1.2rem; flex-shrink: 0; }
+}
+
+.errorAlert {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  background: tone($danger-color, 40%);
+  border-left: 4px solid $danger-color;
+  padding: $spacing-sm $spacing-md;
+  border-radius: $border-radius;
+  margin-bottom: $spacing-md;
+  color: tone($danger-color, -10%);
+  font-weight: $font-weight-bold;
+
+  svg { font-size: 1.2rem; flex-shrink: 0; }
+}
+
+.formGroup {
+  margin-bottom: $spacing-md;
+
+  label {
+    display: block;
+    font-size: .875rem;
+    font-weight: $font-weight-bold;
+    color: $secondary-color;
+    margin-bottom: .4rem;
+    letter-spacing: .3px;
+  }
+
+  input, select, textarea {
+    @include transition((border-color, box-shadow));
+    width: 100%;
+    padding: .75rem 1rem;
+    border: 2px solid $gray-300;
+    border-radius: $border-radius;
+    font-size: .95rem;
+    background: $gray-100;
+
+    &:focus {
+      outline: none;
+      border-color: $primary-color;
+      background: $white;
+      box-shadow: 0 0 0 3px alpha($primary-color, .1);
+    }
+
+    &.error {
+      border-color: $danger-color;
+      background: tone($danger-color, 45%);
+    }
+
+    &:disabled {
+      background: $gray-200;
+      cursor: not-allowed;
+      opacity: .6;
+    }
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 140px;
+    font-family: inherit;
+  }
+
+  .errorText {
+    display: block;
+    margin-top: .35rem;
+    font-size: .8rem;
+    color: $danger-color;
+    font-weight: $font-weight-bold;
+  }
+
+  .helperText {
+    display: block;
+    margin-top: .35rem;
+    font-size: .8rem;
+    color: $gray-600;
+  }
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $spacing-md;
+}
+
+.actions {
+  display: flex;
+  gap: $spacing-sm;
+  margin-top: $spacing-lg;
+
+  button {
+    @include flex-center;
+    @include transition(all);
+    flex: 1;
+    padding: .9rem 1.2rem;
+    font-size: 1rem;
+    font-weight: $font-weight-bold;
+    border: none;
+    border-radius: $border-radius;
+    cursor: pointer;
+    gap: .5rem;
+
+    &.primary {
+      background: $primary-color;
+      color: $white;
+
+      &:hover:not(:disabled) {
+        background: tone($primary-color, -8%);
+        transform: translateY(-2px);
+        @include shadow(2);
+      }
+    }
+
+    &.secondary {
+      background: $white;
+      color: $gray-700;
+      border: 2px solid $gray-300;
+
+      &:hover:not(:disabled) {
+        background: $gray-100;
+        border-color: $gray-400;
+      }
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: .5;
+    }
+  }
+}
+
+@include respond-below(lg) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: static;
+    max-height: 400px;
+  }
+}
+
+@include respond-below(md) {
+  .formPage { padding: $spacing-md $spacing-sm; }
+  .header h1 { font-size: 2rem; }
+  .formRow { grid-template-columns: 1fr; }
+  .actions { 
+    @include flex-column;
+  }
+}

@@ -1,0 +1,26 @@
+@use 'sass:color';
+@use 'sass:math';
+
+// ============================================
+// FUNCIONES AUXILIARES
+// ============================================
+
+// Función tone (reemplaza darken/lighten deprecados)
+@function tone($base, $amount) {
+  @return color.adjust($base, $lightness: $amount);
+}
+
+// Convertir px a rem
+@function rem($pixels, $context: 16) {
+  @return math.div($pixels, $context) * 1rem;
+}
+
+// Convertir px a em
+@function em($pixels, $context: 16) {
+  @return math.div($pixels, $context) * 1em;
+}
+
+// Obtener color con transparencia
+@function alpha($color, $opacity) {
+  @return rgba($color, $opacity);
+}

@@ -1,0 +1,54 @@
+@use '../settings/variables' as *;
+@use '../settings/typography' as typo;
+
+// ============================================
+// TIPOGRAFÍA BASE
+// ============================================
+
+body {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  color: $secondary-color;
+  background-color: $background-color;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 $spacing-sm;
+  font-weight: $font-weight-bold;
+  line-height: typo.$line-height-tight;
+  color: $secondary-color;
+}
+
+h1 { font-size: typo.$font-size-4xl; }
+h2 { font-size: typo.$font-size-3xl; }
+h3 { font-size: typo.$font-size-2xl; }
+h4 { font-size: typo.$font-size-xl; }
+h5 { font-size: typo.$font-size-lg; }
+h6 { font-size: typo.$font-size-md; }
+
+p {
+  margin: 0 0 $spacing-sm;
+  line-height: typo.$line-height-normal;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+a {
+  color: $primary-color;
+  text-decoration: none;
+  transition: color $transition-fast;
+  
+  &:hover {
+    color: $accent-color;
+    text-decoration: underline;
+  }
+}
+
+strong, b { font-weight: $font-weight-bold; }
+em, i { font-style: italic; }
+

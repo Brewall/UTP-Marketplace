@@ -1,0 +1,8 @@
+// ============================================
+// useCart Hook (Wrapper sobre CartContext)
+// ============================================
+import { useCartContext } from '../context/CartContext';
+
+export default function useCart() {
+  return useCartContext();
+}

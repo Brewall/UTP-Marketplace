@@ -1,0 +1,169 @@
+// ============================================
+// NAVBAR STYLES - UTP Marketplace
+// ============================================
+
+.navbar {
+  @include shadow(2);
+  background: linear-gradient(135deg, $primary-color 0%, tone($primary-color, -10%) 100%) !important;
+  border-bottom: 3px solid tone($primary-color, -15%);
+  padding: $spacing-sm 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  animation: slideDown .3s ease;
+}
+
+.container {
+  max-width: 1400px;
+}
+
+.brand {
+  @include transition(transform);
+  font-size: 1.5rem;
+  font-weight: $font-weight-bold;
+  color: $white !important;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.navList {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  margin: 0;
+  padding: 0;
+}
+
+.navItem {
+  position: relative;
+}
+
+.navLink {
+  @include transition(all);
+  color: alpha($white, 0.9) !important;
+  font-weight: $font-weight-bold;
+  text-decoration: none;
+  padding: .6rem 1rem;
+  border-radius: $border-radius;
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  font-size: .95rem;
+
+  &:hover {
+    background: alpha($white, 0.15);
+    color: $white !important;
+  }
+
+  &.active {
+    background: alpha($white, 0.2);
+    color: $white !important;
+    font-weight: $font-weight-bold;
+  }
+}
+
+.badge {
+  @include transition(all);
+  background: $white !important;
+  color: $primary-color !important;
+  font-size: .7rem;
+  font-weight: $font-weight-bold;
+  padding: .2rem .5rem;
+  border-radius: 10px;
+  margin-left: .3rem;
+  animation: pulse 2s infinite;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  color: $white;
+  padding: .4rem .8rem;
+  background: alpha($white, 0.1);
+  border-radius: $border-radius;
+  font-size: .9rem;
+
+  svg, i {
+    font-size: 1.1rem;
+  }
+}
+
+.logoutBtn {
+  @include transition(all);
+  padding: .5rem 1.2rem;
+  font-size: .9rem;
+  font-weight: $font-weight-bold;
+  border: 2px solid $white;
+  background: transparent;
+  color: $white;
+  border-radius: $border-radius;
+  cursor: pointer;
+
+  &:hover {
+    background: $white;
+    color: $primary-color;
+    transform: translateY(-2px);
+    @include shadow(2);
+  }
+}
+
+.toggler {
+  border-color: alpha($white, 0.5);
+
+  &:focus {
+    box-shadow: 0 0 0 0.2rem alpha($white, 0.25);
+  }
+}
+
+// Responsivo
+@include respond-below(lg) {
+  .navList {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $spacing-xs;
+    padding-top: $spacing-md;
+  }
+
+  .navLink {
+    width: 100%;
+  }
+
+  .logoutBtn {
+    width: 100%;
+    margin-top: $spacing-sm;
+  }
+}
+
+// Animaciones
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}

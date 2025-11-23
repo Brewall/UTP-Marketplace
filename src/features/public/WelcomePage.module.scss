@@ -1,0 +1,322 @@
+// Variables locales derivadas de las globales
+$utp-red: $primary-color;
+$utp-red-light: tone($primary-color, 10%);
+$utp-dark: #141414;
+$utp-gray: $gray-600;
+
+.pageWrapper {
+  background-color: $white;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ================= HÉROE ================= */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: clamp(4rem, 8vw, 6.5rem) 0 5rem;
+  background: radial-gradient(circle at 20% 20%, rgba(116,17,17,0.25), transparent 60%), linear-gradient(135deg, #0f0f0f 0%, #1d1d1d 60%, #232323 100%);
+  color: #fff;
+  overflow: hidden;
+  width: 100%;
+}
+.heroOverlay {
+  pointer-events: none;
+}
+.heroTitle {
+  font-weight: 700;
+  font-size: clamp(2.4rem, 5vw, 3.4rem);
+  line-height: 1.1;
+  margin-bottom: 1.25rem;
+  letter-spacing: .5px;
+  color: $white;
+}
+.heroTitle span {
+  color: $utp-red;
+  font-weight: 800;
+}
+.heroSubtitle {
+  font-size: clamp(1.05rem, 2.1vw, 1.25rem);
+  max-width: 42ch;
+  color: #d7d7d7;
+  margin-bottom: 2rem;
+}
+.ctaGroup {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+.primaryBtn,
+.secondaryBtn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: .95rem 2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all .35s ease;
+}
+.primaryBtn {
+  background: $utp-red;
+  color: $white;
+  box-shadow: 0 8px 24px -6px alpha($utp-red, .55);
+}
+.primaryBtn:hover {
+  background: $utp-red-light;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px -8px alpha($utp-red, .65);
+}
+.secondaryBtn {
+  background: transparent;
+  color: $white;
+  border: 2px solid alpha($white, .6);
+  backdrop-filter: blur(2px);
+}
+.secondaryBtn:hover {
+  border-color: $white;
+  color: $white;
+  transform: translateY(-3px);
+  background: alpha($white, .08);
+}
+.heroFeatures {
+  display: flex;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+  font-size: .85rem;
+  font-weight: 600;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  color: $gray-400;
+}
+.heroFeatures div {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.visualWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+}
+.heroImage {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  border-radius: 28px;
+  @include shadow(4);
+  outline: 2px solid alpha($white, .08);
+  outline-offset: -2px;
+  filter: saturate(1.1) contrast(1.05);
+}
+
+/* Íconos flotantes */
+.floatIcon {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  border-radius: 20px;
+  background: linear-gradient(145deg, alpha($white, .95), alpha($white, .85));
+  color: $utp-red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  @include shadow(3);
+  animation: float 5.5s ease-in-out infinite;
+}
+.float1 { top: -25px; left: -15px; animation-delay: 0s; }
+.float2 { bottom: -25px; right: 10px; animation-delay: 1.2s; }
+.float3 { top: 50%; left: -35px; transform: translateY(-50%); animation-delay: .6s; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-16px); }
+}
+
+/* ================= CATEGORÍAS ================= */
+.categories {
+  background: linear-gradient(135deg, $primary-color 0%, tone($primary-color, 8%) 60%, tone($primary-color, 12%) 100%);
+  padding: 4.5rem 0;
+  position: relative;
+  color: $white;
+}
+.sectionTitle {
+  font-size: clamp(1.9rem, 3.2vw, 2.4rem);
+  font-weight: 700;
+  letter-spacing: .5px;
+  margin-bottom: 2.5rem;
+  position: relative;
+  color: $white;
+}
+.sectionTitle:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -12px;
+  width: 70px;
+  height: 4px;
+  background: $white;
+  border-radius: 2px;
+}
+.categoryCard {
+  position: relative;
+  height: 280px;
+  border-radius: 22px;
+  overflow: hidden;
+  cursor: pointer;
+  isolation: isolate;
+  @include shadow(4);
+  @include transition(transform);
+
+  &:hover {
+    transform: translateY(-10px);
+    @include shadow(5);
+  }
+}
+.categoryBg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(.65) saturate(1.05);
+  transition: transform 1.1s ease;
+}
+.categoryCard:hover .categoryBg {
+  transform: scale(1.08);
+}
+.categoryOverlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, alpha($utp-red, .75), alpha($utp-red, .55));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.2rem;
+  color: $white;
+  opacity: 0;
+  @include transition(opacity);
+  mix-blend-mode: multiply;
+}
+.categoryCard:hover .categoryOverlay { opacity: 1; }
+.categoryContent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.25rem 1.4rem 1.4rem;
+  background: linear-gradient(to top, alpha($black, .65), alpha($black, .35) 60%, transparent);
+  color: $white;
+  z-index: 2;
+}
+.categoryContent h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 .35rem;
+  color: $white;
+}
+.categoryContent p {
+  font-size: .85rem;
+  opacity: .85;
+  margin: 0;
+}
+
+/* ================= BENEFICIOS ================= */
+.benefits {
+  padding: 5rem 0 5.5rem;
+  background: $gray-100;
+}
+.benefitsImageWrapper {
+  position: relative;
+  border-radius: 26px;
+  overflow: hidden;
+  @include shadow(4);
+}
+.benefitsImage {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  filter: saturate(1.05) contrast(1.05);
+  @include transition(transform);
+}
+.benefitsImageWrapper:hover .benefitsImage {
+  transform: scale(1.04);
+}
+.benefitsList {
+  list-style: none;
+  margin: 2rem 0 2.25rem;
+  padding: 0;
+  display: grid;
+  gap: 1.15rem;
+}
+.benefitsList li {
+  display: flex;
+  align-items: flex-start;
+  gap: .85rem;
+  font-size: .95rem;
+  line-height: 1.4;
+  background: $white;
+  padding: .9rem 1.1rem .95rem;
+  border-radius: 14px;
+  @include shadow(1);
+  @include transition((box-shadow, transform));
+}
+.benefitsList li:hover {
+  @include shadow(2);
+  transform: translateY(-4px);
+}
+.benefitsList li svg {
+  color: $utp-red;
+  flex-shrink: 0;
+  font-size: 1.25rem;
+  margin-top: 2px;
+}
+.bottomCta {
+  font-size: .9rem;
+  font-weight: 600;
+  letter-spacing: .5px;
+  color: $utp-gray;
+}
+.bottomCta a {
+  color: $utp-red;
+  text-decoration: none;
+  margin-left: .35rem;
+  position: relative;
+}
+.bottomCta a:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 2px;
+  width: 100%;
+  background: $utp-red;
+  transform: scaleX(0);
+  transform-origin: left;
+  @include transition(transform);
+}
+.bottomCta a:hover:after { transform: scaleX(1); }
+
+/* ================= RESPONSIVO ================= */
+@include respond-below(lg) {
+  .heroTitle { font-size: clamp(2.2rem, 6vw, 2.8rem); }
+  .heroSubtitle { margin-bottom: 1.75rem; }
+  .visualWrapper { max-width: 480px; }
+  .categories { padding: 3.75rem 0; }
+  .benefits { padding: 4rem 0 4.5rem; }
+}
+@include respond-below(sm) {
+  .ctaGroup { flex-direction: column; }
+  .primaryBtn, .secondaryBtn { width: 100%; }
+  .heroFeatures { flex-wrap: wrap; }
+  .categoryCard { height: 240px; }
+  .benefitsList li { font-size: .85rem; }
+}
