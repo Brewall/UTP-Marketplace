@@ -73,3 +73,8 @@ El sistema utiliza autenticación simulada con correos institucionales UTP:
 
 El proyecto sigue una arquitectura modular basada en features. Para información detallada sobre la organización del código, patrones de diseño, sistema de estilos y consideraciones para migración a Firebase, consulte la [Documentación Técnica Completa](./docs/TECHNICAL_GUIDE.md).
 
+## Documentación Adicional
+
+- [Guía Técnica Completa](./docs/TECHNICAL_GUIDE.md) - Arquitectura, patrones y migración Firebase
+- [Guía de Seguridad](./docs/SECURITY_GUIDE.md) - Prácticas de seguridad y auditoría
+
