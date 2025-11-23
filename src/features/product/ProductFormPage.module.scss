@@ -1,3 +1,6 @@
+@use '@/styles/settings' as *;
+@use '@/styles/tools' as *;
+
 .formPage {
   min-height: 100vh;
   background: linear-gradient(135deg, $gray-100 0%, $white 100%);

@@ -1,3 +1,9 @@
+@use '@/styles/settings' as *;
+@use '@/styles/tools' as *;
+
+@use '@/styles/settings' as *;
+@use '@/styles/tools' as *;
+
 // Variables locales derivadas de las globales
 $utp-red: $primary-color;
 $utp-red-light: tone($primary-color, 10%);

@@ -1,6 +1,8 @@
 // ============================================
 // FOOTER STYLES - UTP Marketplace
 // ============================================
+@use '@/styles/settings' as *;
+@use '@/styles/tools' as *;
 
 .footer {
   background: linear-gradient(135deg, $gray-100 0%, $white 100%);

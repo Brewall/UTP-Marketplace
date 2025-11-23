@@ -1,6 +1,8 @@
 // ============================================
 // NAVBAR STYLES - UTP Marketplace
 // ============================================
+@use '@/styles/settings' as *;
+@use '@/styles/tools' as *;
 
 .navbar {
   @include shadow(2);
