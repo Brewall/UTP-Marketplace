@@ -1,0 +1,362 @@
+
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/animations';
+
+.home {
+  .hero {
+    background: linear-gradient(135deg, $secondary-color 0%, darken($secondary-color, 10%) 100%); // Negro UTP para el header
+    color: $white;
+    padding: $spacing-xl 0;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.05)" points="0,1000 1000,0 1000,1000"/></svg>');
+    }
+
+    .heroContent {
+      position: relative;
+      z-index: 2;
+      animation: fadeIn 1s ease-out;
+
+      .heroTitle {
+        font-size: 3rem;
+        font-weight: $font-weight-bold;
+        margin-bottom: $spacing-md;
+        line-height: 1.2;
+
+        span {
+          color: $primary-color; 
+          text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        @include responsive(md) {
+          font-size: 2.5rem;
+        }
+
+        @include responsive(sm) {
+          font-size: 2rem;
+        }
+      }
+
+      .heroSubtitle {
+        font-size: 1.2rem;
+        margin-bottom: $spacing-lg;
+        opacity: 0.9;
+        line-height: 1.6;
+      }
+
+      .heroButtons {
+        @include flex-center;
+        gap: $spacing-md;
+        flex-wrap: wrap;
+
+        .btn {
+          padding: $spacing-md $spacing-lg;
+          border-radius: 50px;
+          font-weight: $font-weight-bold;
+          @include transition(all, 0.3s);
+
+          &:hover {
+            transform: translateY(-2px);
+            @include box-shadow(2);
+          }
+        }
+
+        @include responsive(sm) {
+          flex-direction: column;
+          gap: $spacing-sm;
+        }
+      }
+    }
+
+    .heroVisual {
+      position: relative;
+      @include flex-center;
+
+      .heroImage {
+        width: 100%;
+        max-width: 500px;
+        border-radius: 20px;
+        @include box-shadow(3);
+        animation: float 6s ease-in-out infinite;
+      }
+
+      .floatingElements {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+
+        .floatingElement {
+          position: absolute;
+          background: rgba($white, 0.95);
+          border-radius: 15px;
+          padding: $spacing-sm;
+          @include flex-center;
+          flex-direction: column;
+          @include box-shadow(2);
+          animation: float 3s ease-in-out infinite;
+          min-width: 80px;
+
+          i {
+            font-size: 1.5rem;
+            margin-bottom: 4px;
+            color: $primary-color;
+          }
+
+          small {
+            font-size: 0.7rem;
+            font-weight: $font-weight-bold;
+            color: $primary-color;
+          }
+
+          &:nth-child(1) {
+            top: 10%;
+            left: 0;
+            animation-delay: 0s;
+          }
+
+          &:nth-child(2) {
+            top: 70%;
+            right: 10%;
+            animation-delay: 1s;
+          }
+
+          &:nth-child(3) {
+            bottom: 20%;
+            left: 5%;
+            animation-delay: 2s;
+          }
+        }
+      }
+    }
+  }
+
+  .categories {
+    padding: $spacing-xl 0;
+    background: linear-gradient(135deg, $primary-color 0%, $accent-color 100%); // Rojo UTP para la sección de categorías
+    color: $white;
+
+    .sectionTitle {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: $font-weight-bold;
+      margin-bottom: $spacing-sm;
+      color: $white;
+
+      @include responsive(md) {
+        font-size: 2rem;
+      }
+    }
+
+    .sectionSubtitle {
+      text-align: center;
+      font-size: 1.1rem;
+      color: rgba($white, 0.9);
+      margin-bottom: $spacing-lg;
+    }
+
+    .categoryCard {
+      display: block;
+      background: rgba($white, 0.95);
+      border-radius: 15px;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      @include box-shadow(2);
+      @include transition(all, 0.3s);
+
+      &:hover {
+        transform: translateY(-8px);
+        @include box-shadow(4);
+        text-decoration: none;
+        color: inherit;
+        background: $white;
+
+        .categoryImage img {
+          transform: scale(1.1);
+        }
+
+        .categoryLink {
+          color: $primary-color;
+          transform: translateX(4px);
+        }
+      }
+
+      .categoryImage {
+        position: relative;
+        height: 200px;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          @include transition(transform, 0.5s);
+        }
+
+        .categoryOverlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(135deg, rgba($primary-color, 0.7), rgba($accent-color, 0.7));
+          @include flex-center;
+
+          .categoryIcon {
+            font-size: 3rem;
+            color: $white;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+          }
+        }
+      }
+
+      .categoryContent {
+        padding: $spacing-md;
+
+        h3 {
+          font-size: 1.3rem;
+          font-weight: $font-weight-bold;
+          color: $secondary-color;
+          margin-bottom: $spacing-xs;
+        }
+
+        p {
+          color: $text-secondary;
+          margin-bottom: $spacing-sm;
+          line-height: 1.5;
+        }
+
+        .categoryLink {
+          color: $primary-color;
+          font-weight: $font-weight-bold;
+          @include transition(all, 0.3s);
+        }
+      }
+    }
+  }
+
+  .featured {
+    padding: $spacing-xl 0;
+    background: $white;
+
+    .sectionTitle {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: $font-weight-bold;
+      margin-bottom: $spacing-sm;
+      color: $secondary-color;
+
+      @include responsive(md) {
+        font-size: 2rem;
+      }
+    }
+
+    .sectionSubtitle {
+      text-align: center;
+      font-size: 1.1rem;
+      color: $text-secondary;
+      margin-bottom: $spacing-lg;
+    }
+  }
+
+    .whyUs {
+    padding: $spacing-xl 0;
+    background: linear-gradient(135deg, darken($secondary-color, 5%) 0%, $secondary-color 100%); // Fondo negro oscuro
+    color: $white;
+
+    .whyUsImage {
+      width: 100%;
+      border-radius: 15px;
+      @include box-shadow(3);
+    }
+
+    .whyUsContent {
+      h2 {
+        font-size: 2.5rem;
+        font-weight: $font-weight-bold;
+        margin-bottom: $spacing-lg;
+        color: $white;
+        text-align: center;
+
+        @include responsive(md) {
+          font-size: 2rem;
+        }
+      }
+
+      .benefits {
+        .benefit {
+          display: flex;
+          align-items: flex-start;
+          gap: $spacing-md;
+          margin-bottom: $spacing-lg;
+          padding: $spacing-lg;
+          border-radius: 12px;
+          background: rgba($white, 0.08);
+          border: 1px solid rgba($white, 0.1);
+          @include transition(all, 0.3s);
+
+          &:hover {
+            background: rgba($white, 0.15);
+            transform: translateX(8px);
+            border-color: rgba($primary-color, 0.3);
+            @include box-shadow(2);
+          }
+
+          .benefitIcon {
+            font-size: 2.5rem;
+            flex-shrink: 0;
+            color: $primary-color;
+            background: rgba($primary-color, 0.1);
+            padding: $spacing-sm;
+            border-radius: 12px;
+            @include transition(all, 0.3s);
+          }
+
+          &:hover .benefitIcon {
+            background: rgba($primary-color, 0.2);
+            transform: scale(1.1);
+          }
+
+          div {
+            flex: 1;
+
+            h4 {
+              font-size: 1.3rem;
+              font-weight: $font-weight-bold;
+              color: $white;
+              margin-bottom: $spacing-xs;
+            }
+
+            p {
+              color: rgba($white, 0.8);
+              margin: 0;
+              line-height: 1.6;
+              font-size: 1rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+}
