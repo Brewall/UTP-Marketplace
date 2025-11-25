@@ -91,7 +91,7 @@ export default function WelcomePage() {
             <div className="col-lg-6 mb-4 mb-lg-0">
               <div className={styles.benefitsImageWrapper}>
                 <img
-                  src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=900&auto=format&fit=crop&q=60"
+                  src="https://diariocorreo.pe/resizer/v2/7R3YL7BDFZFGXP46TAS5SJIIQ4.jpeg?auth=16c1a907658c30c3a7174f4c53e441f8688ee326e3adf77c22e3229e3ef80f46&width=1200&height=800&quality=75&smart=true"
                   alt="Campus UTP"
                   className={styles.benefitsImage}
                 />
