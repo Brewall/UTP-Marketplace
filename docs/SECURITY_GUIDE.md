@@ -189,36 +189,3 @@ Si encuentras una vulnerabilidad de seguridad en el proyecto:
 
 **Nota**: Este documento debe actualizarse cada vez que se implementen cambios relacionados con seguridad o se detecten nuevas vulnerabilidades.
 
-## Comandos
-```bash
-# Auditoría de vulnerabilidades (falla con nivel alto o superior)
-npm run audit:check
-
-# Auditoría completa
-npm run security:check
-
-# Listar paquetes desactualizados
-npm run deps:outdated
-
-# Intentar corregir vulnerabilidades automáticamente
-npm run audit:fix
-
-# Ver versiones de dependencias clave
-npm ls nth-check postcss webpack-dev-server
-```
-
-## Overrides en uso
-```json
-{
-  "overrides": {
-    "nth-check": "^2.1.1",
-    "postcss": "^8.4.31",
-    "webpack-dev-server": "^4.15.2"
-  }
-}
-```
-
-## Referencias
-- npm audit: https://docs.npmjs.com/cli/v9/commands/npm-audit
-- Documentación de React: https://react.dev/learn
-- Avisos de seguridad de GitHub: https://github.com/advisories
