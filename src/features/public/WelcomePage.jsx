@@ -64,7 +64,7 @@ export default function WelcomePage() {
       {/* Categorías */}
       <section className={styles.categories}>
         <div className="container">
-          <h2 className={styles.sectionTitle}>Explora Categorías</h2>
+          <h2 style={{color:"white"}}>Explora Categorías</h2>
           <div className="row g-4 mt-1">
             {CATEGORY_DATA.map(cat => (
               <div className="col-md-4" key={cat.key}>
