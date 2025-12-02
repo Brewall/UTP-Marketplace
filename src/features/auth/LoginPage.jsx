@@ -123,7 +123,12 @@ export default function LoginPage() {
                     {loading ? 'Iniciando...' : (<><FaSignInAlt /> Ingresar</>)}
                   </button>
                 </form>
-
+                  <div className={styles.registerBox}>
+                  <span>¿No tienes una cuenta?</span>
+                  <Link to="/registrarse" className={styles.registerLink}>
+                      Crear cuenta
+                   </Link>
+                  </div>  
                 <Link to="/bienvenida" className={styles.backLink}>
                   <FaArrowLeft /> Volver al inicio
                 </Link>
