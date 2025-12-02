@@ -41,10 +41,10 @@ const ProductFormPage = () => {
   }, []);
 
   const loadMyProducts = async () => {
-    if (!user?.id && !user?.email) return;
+    if (!user?.uid && !user?.email) return;
     try {
       setLoadingProducts(true);
-      const products = await productService.getBySeller(user.id || user.email);
+      const products = await productService.getBySeller(user.uid || user.email);
       setMyProducts(products);
     } catch (e) {
       console.error('Error al cargar publicaciones:', e);
@@ -128,8 +128,10 @@ const ProductFormPage = () => {
         description: formData.description.trim(),
         imageUrl: formData.imageUrl.trim() || null,
         stock: parseInt(formData.stock),
-        sellerId: user.id,
-        sellerName: user.name,
+
+        // CORRECTO PARA FIREBASE
+        sellerId: user.uid,
+        sellerName: user.displayName,
         sellerEmail: user.email
       };
 
@@ -441,3 +443,4 @@ const ProductFormPage = () => {
 };
 
 export default ProductFormPage;
+
