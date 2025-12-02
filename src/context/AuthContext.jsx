@@ -4,7 +4,7 @@
 // ============================================
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import authService from '../services/auth.service';
+import * as authService from '../services/auth.service';
 
 // ============================================
 // CREAR CONTEXTO
