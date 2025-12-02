@@ -7,16 +7,27 @@ import { useState } from 'react';
 import { Link, useNavigate, Navigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import styles from './LoginPage.module.scss';
-import { FaEnvelope, FaLock, FaSignInAlt, FaArrowLeft, FaExclamationTriangle, FaLightbulb, FaShieldAlt, FaUsers, FaLaptop } from 'react-icons/fa';
+import { 
+  FaEnvelope, 
+  FaLock, 
+  FaSignInAlt, 
+  FaArrowLeft, 
+  FaExclamationTriangle, 
+  FaLightbulb, 
+  FaShieldAlt, 
+  FaUsers, 
+  FaLaptop 
+} from 'react-icons/fa';
 
 export default function LoginPage() {
-  const { user, login } = useAuth();
+  const { user, login } = useAuth(); // login viene de AuthContext
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
+  // Si ya está logueado, redirigir al home
   if (user) return <Navigate to="/" replace />;
 
   const handleChange = (e) => {
@@ -39,11 +50,13 @@ export default function LoginPage() {
     e.preventDefault();
     const v = validate();
     if (v) { setError(v); return; }
+
     setLoading(true);
     setError('');
+
     try {
-      await login(formData.email, formData.password);
-      navigate('/', { replace: true });
+      await login(formData.email, formData.password); // Aquí usa login del AuthContext
+      navigate('/', { replace: true }); // Redirigir al home
     } catch (err) {
       setError(err.message || 'Error inesperado.');
     } finally {
@@ -123,12 +136,14 @@ export default function LoginPage() {
                     {loading ? 'Iniciando...' : (<><FaSignInAlt /> Ingresar</>)}
                   </button>
                 </form>
-                  <div className={styles.registerBox}>
+
+                <div className={styles.registerBox}>
                   <span>¿No tienes una cuenta?</span>
                   <Link to="/registrarse" className={styles.registerLink}>
                       Crear cuenta
-                   </Link>
-                  </div>  
+                  </Link>
+                </div>  
+
                 <Link to="/bienvenida" className={styles.backLink}>
                   <FaArrowLeft /> Volver al inicio
                 </Link>

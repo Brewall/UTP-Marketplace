@@ -57,15 +57,17 @@ export async function loginUser(email, password) {
     const uid = result.user.uid;
     const snap = await getDoc(doc(db, "users", uid));
 
+    if (!snap.exists()) throw new Error("Usuario no encontrado en Firestore");
+
     const userData = { uid, ...snap.data() };
 
     // Guardar sesión
     sessionStorage.setItem("utp_user", JSON.stringify(userData));
 
-    return userData;
+    return { success: true, user: userData };
 
   } catch (error) {
-    throw new Error(error.message);
+    return { success: false, message: error.message };
   }
 }
 
