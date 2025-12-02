@@ -11,7 +11,7 @@ import AppLayout from '../components/layout/AppLayout';
 // Páginas Públicas y Autenticación
 import WelcomePage from '../features/public/WelcomePage';
 import LoginPage from '../features/auth/LoginPage';
-
+import RegisterPage from '../features/auth/RegisterPage';
 // Páginas de Catálogo
 import CatalogPage from '../features/catalog/CatalogPage';
 
@@ -49,6 +49,9 @@ export const router = createBrowserRouter([
       {
         path: 'ingresar',
         element: <LoginPage />
+      },
+      { path: 'registrarse',
+         element: <RegisterPage /> 
       }
     ]
   },

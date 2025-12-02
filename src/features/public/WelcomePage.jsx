@@ -47,7 +47,7 @@ export default function WelcomePage() {
             <div className="col-lg-6">
               <div className={styles.visualWrapper}>
                 <img
-                  src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=900&auto=format&fit=crop&q=60"
+                  src="https://www.utp.edu.pe/web/sites/default/files/styles/transformar_webp/public/background-imagen/img-prop01.png.webp?itok=wpLn6zpX"
                   alt="Estudiantes colaborando"
                   className={styles.heroImage}
                 />
